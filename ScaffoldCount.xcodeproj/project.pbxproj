@@ -1,0 +1,90 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+		D2A57DC1D883FD21FB995169 = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ScaffoldCount.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AAE3C71672121C2397F9F81F = {isa = PBXFileSystemSynchronizedRootGroup; path = ScaffoldCount; sourceTree = "<group>"; };
+		8F51EF3B9040A527832BEBBA = {isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
+		25D902C24283AB8CFBAC54DF = {isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
+		9B207167E5381C47682C6B4F = {isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
+		FAD58DE7366495DB4650CFEF = {isa = PBXGroup; children = (AAE3C71672121C2397F9F81F, D6E4A9B6646C62FC48BAA6DD); sourceTree = "<group>"; };
+		D6E4A9B6646C62FC48BAA6DD = {isa = PBXGroup; children = (D2A57DC1D883FD21FB995169); name = Products; sourceTree = "<group>"; };
+		058DE92451763E137316DF3A = {isa = PBXNativeTarget; buildConfigurationList = DD5B959833E219C36151D647; buildPhases = (25D902C24283AB8CFBAC54DF, 8F51EF3B9040A527832BEBBA, 9B207167E5381C47682C6B4F); buildRules = (); dependencies = (); fileSystemSynchronizedGroups = (AAE3C71672121C2397F9F81F); name = ScaffoldCount; packageProductDependencies = (); productName = ScaffoldCount; productReference = D2A57DC1D883FD21FB995169; productType = "com.apple.product-type.application"; };
+		4DC844ABCCFC0D132D087C1C = {isa = PBXProject; attributes = {BuildIndependentTargetsInParallel = 1; LastSwiftUpdateCheck = 2700; LastUpgradeCheck = 2700; TargetAttributes = {058DE92451763E137316DF3A = {CreatedOnToolsVersion = 27.0; }; }; }; buildConfigurationList = 2CA666E9AB7FD185F98B8152; developmentRegion = en; hasScannedForEncodings = 0; knownRegions = (en, Base); mainGroup = FAD58DE7366495DB4650CFEF; minimizedProjectReferenceProxies = 1; preferredProjectObjectVersion = 77; productRefGroup = D6E4A9B6646C62FC48BAA6DD; projectDirPath = ""; projectRoot = ""; targets = (058DE92451763E137316DF3A); };
+		B69466B536F8CE43B6356EC1 = {isa = XCBuildConfiguration; buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_TESTABILITY = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("DEBUG=1", "$(inherited)");
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			}; name = Debug; };
+		64E1E1CBE1CA8E88EF3A838A = {isa = XCBuildConfiguration; buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			}; name = Release; };
+		626726E60BD1215F36719A30 = {isa = XCBuildConfiguration; buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Scaffold Count";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Take a photo of the plank ends to count them.";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Save the counted photo to your library.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.elviskerebi.scaffoldcount;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = 1;
+			}; name = Debug; };
+		E7D707A26E7F7B6FF52C489C = {isa = XCBuildConfiguration; buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Scaffold Count";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Take a photo of the plank ends to count them.";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Save the counted photo to your library.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.elviskerebi.scaffoldcount;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = 1;
+			}; name = Release; };
+		2CA666E9AB7FD185F98B8152 = {isa = XCConfigurationList; buildConfigurations = (B69466B536F8CE43B6356EC1, 64E1E1CBE1CA8E88EF3A838A); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
+		DD5B959833E219C36151D647 = {isa = XCConfigurationList; buildConfigurations = (626726E60BD1215F36719A30, E7D707A26E7F7B6FF52C489C); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
+	};
+	rootObject = 4DC844ABCCFC0D132D087C1C;
+}
