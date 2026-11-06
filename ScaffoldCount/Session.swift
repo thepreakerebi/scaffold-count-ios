@@ -35,6 +35,8 @@ final class Session {
     /// When the current result arrived, for the reveal animation.
     private(set) var resultDate = Date.distantPast
     private(set) var touch: Touch?
+    /// Corner being dragged on the Mark screen (shows the magnifier).
+    var activeCorner: Int?
 
     private var detector: PlankDetector?
     private var loadTask: Task<PlankDetector, Error>?

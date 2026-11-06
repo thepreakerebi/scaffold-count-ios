@@ -31,6 +31,7 @@ struct RootView: View {
                 }
         }
         .tint(Palette.primary)
+        .overlay { TouchOverlay().ignoresSafeArea() }
     }
 }
 

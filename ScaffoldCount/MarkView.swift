@@ -3,7 +3,6 @@ import SwiftUI
 /// Step 2: drag four corners around the plank ends.
 struct MarkView: View {
     @Environment(Session.self) private var session
-    @State private var dragging: Int?
     @State private var dragStart: CGPoint?
 
     var body: some View {
@@ -53,18 +52,20 @@ struct MarkView: View {
                 }
                 .buttonStyle(PrimaryButtonStyle())
                 .disabled(session.counting)
+                .tourTarget("count")
             }
         }
         .background(Palette.surface)
         .toolbar(.hidden, for: .navigationBar)
         .animation(.snappy, value: session.errorMessage)
-        .sensoryFeedback(.selection, trigger: dragging) { _, new in new != nil }
+        .sensoryFeedback(.selection, trigger: session.activeCorner) { _, new in new != nil }
     }
 
     private func editor(_ photo: UIImage) -> some View {
         GeometryReader { geo in
             let fit = Fit(image: photo.size, in: CGRect(origin: .zero, size: geo.size).insetBy(dx: 24, dy: 8))
             let corners = session.quad.points.map(fit.view)
+            let globalOrigin = geo.frame(in: .global).origin
 
             ZStack(alignment: .topLeading) {
                 Image(uiImage: photo)
@@ -90,14 +91,14 @@ struct MarkView: View {
                 .allowsHitTesting(false)
 
                 ForEach(0..<4, id: \.self) { index in
-                    handle(active: dragging == index)
+                    handle(active: session.activeCorner == index)
                         .position(corners[index])
                         .gesture(
                             DragGesture(minimumDistance: 0, coordinateSpace: .named("editor"))
                                 .onChanged { value in
                                     if dragStart == nil {
                                         dragStart = session.quad[index]
-                                        dragging = index
+                                        session.activeCorner = index
                                     }
                                     guard let start = dragStart else { return }
                                     session.quad[index] = fit.clamp(CGPoint(
@@ -107,13 +108,13 @@ struct MarkView: View {
                                 }
                                 .onEnded { _ in
                                     dragStart = nil
-                                    dragging = nil
+                                    session.activeCorner = nil
                                 }
                         )
                         .accessibilityLabel(["Top left corner", "Top right corner", "Bottom right corner", "Bottom left corner"][index])
                 }
 
-                if let index = dragging {
+                if let index = session.activeCorner {
                     let corner = corners[index]
                     Loupe(image: photo, quad: session.quad, centre: session.quad[index], zoom: fit.scale * 3)
                         .position(
@@ -125,7 +126,8 @@ struct MarkView: View {
                 }
             }
             .coordinateSpace(name: "editor")
-            .animation(.snappy(duration: 0.2), value: dragging)
+            .onAppear { Tour.shared.imageRect = fit.rect.offsetBy(dx: globalOrigin.x, dy: globalOrigin.y) }
+            .animation(.snappy(duration: 0.2), value: session.activeCorner)
         }
     }
 

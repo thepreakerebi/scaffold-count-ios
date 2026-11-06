@@ -119,6 +119,7 @@ struct HomeView: View {
                 Text("Library")
             }
             .buttonStyle(TextButtonStyle())
+            .tourTarget("library")
             Button(action: takePhoto) {
                 Label("Take photo", systemImage: "camera.fill")
             }

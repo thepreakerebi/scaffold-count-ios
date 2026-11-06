@@ -17,6 +17,7 @@ struct ResultView: View {
                 RoundIconButton(systemName: "arrow.uturn.backward", label: "Undo", disabled: session.history.isEmpty) {
                     session.undo()
                 }
+                .tourTarget("undo")
             }
 
             summary
@@ -30,6 +31,7 @@ struct ResultView: View {
                             RoundIconButton(systemName: "arrow.down.right.and.arrow.up.left", label: "Fit photo") {
                                 fitTick += 1
                             }
+                            .tourTarget("fit")
                             .padding(12)
                             .transition(.opacity)
                         }
@@ -45,6 +47,7 @@ struct ResultView: View {
             Footer {
                 Button("New photo") { session.newPhoto() }
                     .buttonStyle(TextButtonStyle())
+                    .tourTarget("newPhoto")
                 if session.marks.isEmpty {
                     Button("Adjust area") { session.path.removeLast() }
                         .buttonStyle(PrimaryButtonStyle())
@@ -178,6 +181,18 @@ struct ResultCanvas: View {
             )
             .simultaneousGesture(magnify(fit: fit, centre: centre, size: geo.size))
             .simultaneousGesture(pan(fit: fit, size: geo.size))
+            .onAppear {
+                let origin = geo.frame(in: .global).origin
+                Tour.shared.imageRect = fit.rect.offsetBy(dx: origin.x, dy: origin.y)
+            }
+            .onChange(of: Tour.shared.zoomRequest) { _, request in
+                guard let request else { return }
+                if request.fit { animateToFit(); return }
+                let origin = geo.frame(in: .global).origin
+                let a = CGPoint(x: request.anchor.x - origin.x, y: request.anchor.y - origin.y)
+                let offset = CGSize(width: (a.x - centre.x) * (1 - request.scale), height: (a.y - centre.y) * (1 - request.scale))
+                zoom = clamped(Zoom(scale: request.scale, offset: offset), fit: fit, size: geo.size)
+            }
         }
         .clipped()
         .task(id: session.resultDate) {
